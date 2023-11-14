@@ -1,0 +1,55 @@
+package com.cabapp.pro.util;
+
+ 
+ 
+import java.time.LocalDateTime;
+
+import com.cabapp.pro.dto.TripBookingRequestSubmitDTO;
+import com.cabapp.pro.dto.TripBookingResponseDTO;
+import com.cabapp.pro.entity.TripBooking;
+
+public class TripBookingDTOMapper {
+	
+	public TripBooking getTripBookingFromTripBookingDTO(TripBookingRequestSubmitDTO dto)
+	{
+		TripBooking e = new TripBooking();
+		
+		e.setCustomerId(dto.getCustomerId());
+		e.setFromLocation(dto.getFromLocation());
+		e.setToLocation(dto.getToLocation());
+		e.setFromDateTime(LocalDateTime.now());
+		e.setToDateTime(LocalDateTime.now());
+		e.setDistanceInKm(dto.getDistanceInKm());
+		 
+		e.setBill(dto.getBill());
+		
+ 
+		return e;
+ 
+	}
+	public TripBookingResponseDTO getTripBookingDTOFromTripBooking(TripBooking tripBooking)
+	{
+		TripBookingResponseDTO e = new TripBookingResponseDTO();
+		e.setTripBookingId(tripBooking.getTripBookingId());
+		e.setCustomerId(tripBooking.getCustomerId());
+		e.setFromLocation(tripBooking.getFromLocation());
+		e.setToLocation(tripBooking.getToLocation());
+		e.setFromDateTime(LocalDateTime.now());
+		e.setToDateTime(LocalDateTime.now());
+		e.setDistanceInKm(tripBooking.getDistanceInKm());
+		e.setStatus(tripBooking.isStatus());
+		e.setBill(tripBooking.getBill());
+		e.setDrivername(tripBooking.getDriver().getUsername());
+		e.setMobileNumber(tripBooking.getDriver().getMobileNumber());
+		e.setEmail(tripBooking.getDriver().getEmail());
+		
+ 
+		return e;
+	 
+		
+	}
+	
+	
+	
+
+}
